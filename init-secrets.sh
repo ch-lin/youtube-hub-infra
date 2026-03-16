@@ -193,7 +193,7 @@ echo "----------------------------------------------------------------"
 if [ -f "$API_KEY_CONF" ]; then
     API_KEY=$(grep "^YOUTUBE_API_KEY=" "$API_KEY_CONF" | cut -d '=' -f2 | tr -d '"' | tr -d "'")
     if [ ! -z "$API_KEY" ]; then
-        update_env "$HUB_ENV" "YOUTUBE_HUB_DEFAULT_YOUTUBE_API_KEY" "$API_KEY" "Youtube Hub"
+        update_env "$HUB_ENV" "YOUTUBE_HUB_DEFAULT_CONFIG_YOUTUBE_API_KEY" "$API_KEY" "Youtube Hub"
     else
         echo -e "   ${RED}⚠️  Warning: No Key in config file${NC}"
     fi
@@ -228,8 +228,8 @@ HUB_SECRET=$(generate_uuid)
 
 update_env "$AUTH_ENV" "INIT_HUB_CLIENT_ID"     "$HUB_ID"     "Auth"
 update_env "$AUTH_ENV" "INIT_HUB_CLIENT_SECRET" "$HUB_SECRET" "Auth"
-update_env "$HUB_ENV" "YOUTUBE_HUB_DEFAULT_CLIENT_ID"     "$HUB_ID"     "Youtube Hub"
-update_env "$HUB_ENV" "YOUTUBE_HUB_DEFAULT_CLIENT_SECRET" "$HUB_SECRET" "Youtube Hub"
+update_env "$HUB_ENV" "YOUTUBE_HUB_DEFAULT_CONFIG_CLIENT_ID"     "$HUB_ID"     "Youtube Hub"
+update_env "$HUB_ENV" "YOUTUBE_HUB_DEFAULT_CONFIG_CLIENT_SECRET" "$HUB_SECRET" "Youtube Hub"
 
 # ==============================================================================
 # 4. Generate Postman Client
